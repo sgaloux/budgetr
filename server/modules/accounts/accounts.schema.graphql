@@ -1,3 +1,7 @@
 type Query {
   accounts: [Account]!
 }
+
+type Mutation {
+  addAccount(name: String!): Account!
+}
