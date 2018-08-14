@@ -6,3 +6,5 @@ tmp/
 temp/
 
 budgetr-dev.db
+.cache/
+dist/

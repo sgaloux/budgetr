@@ -17,7 +17,8 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": false,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "allowJs": true
   },
   "exclude": ["node_modules"],
   "include": ["./server/**/*.tsx", "./server/**/*.ts"]
