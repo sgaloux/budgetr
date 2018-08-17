@@ -7,6 +7,8 @@ const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
   height: "100%",
+  paddingLeft: 5,
+  paddingRight: 5,
   paddingTop: 50,
 });
 

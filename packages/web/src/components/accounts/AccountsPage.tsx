@@ -1,39 +1,47 @@
+import { Button, ButtonGroup, Dialog } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
-import { compute } from "@budgetr/shared";
-export interface AccountsProps {}
+import PageTemplate from "../layout/PageTemplate";
 
-const accountsQuery = gql`
-  query {
-    accounts {
-      id
-      name
-    }
+interface IAccountsPageState {
+  adding: boolean;
+}
+
+export default class AccountsPage extends React.Component<
+  any,
+  IAccountsPageState
+> {
+  constructor(props) {
+    super(props);
+    this.state = { adding: false };
   }
-`;
 
-export default class Accounts extends React.Component<AccountsProps, any> {
   public render() {
     return (
-      <div>
-        <h1>Accounts</h1>
-        <span>Compute from shared lib: {compute(3, 42)}</span>
-        <Query query={accountsQuery}>
-          {({ loading, error, data }) => {
-            if (loading) return <div>loading...</div>;
-            if (error) return <div>error: {error}</div>;
-            else
-              return (
-                <ul>
-                  {data.accounts.map(e => (
-                    <li key={e.id}>{e.name}</li>
-                  ))}
-                </ul>
-              );
-          }}
-        </Query>
-      </div>
+      <PageTemplate title="Accounts">
+        <ButtonGroup>
+          <Button rightIcon={IconNames.PLUS} onClick={this.addAccount}>
+            Add account
+          </Button>
+        </ButtonGroup>
+        <Dialog
+          isOpen={this.state.adding}
+          canEscapeKeyClose={true}
+          isCloseButtonShown={true}
+          onClose={this.closePopup}
+          icon={IconNames.PIVOT_TABLE}
+        >
+          Adding new account..
+        </Dialog>
+      </PageTemplate>
     );
+  }
+
+  private addAccount = () => {
+    this.setState({ adding: true });
+  }
+
+  private closePopup = () => {
+    this.setState({ adding: false });
   }
 }

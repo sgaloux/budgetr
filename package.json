@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "start": "nf start",
-    "start:web": "lerna run start --stream --scope={@budgetr/shared,@budgetr/web}",
+    "start:web": "lerna run start --stream --scope={@budgetr/web}",
     "start:server": "lerna run start --stream --scope={@budgetr/shared,@budgetr/server}",
     "sync:types": "lerna run sync:types && yarn install",
-    "lint:fix": ""
+    "clean": "lerna run clean"
   },
   "devDependencies": {
     "lerna": "^3.0.6"
