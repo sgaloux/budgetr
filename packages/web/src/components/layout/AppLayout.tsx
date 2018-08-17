@@ -10,14 +10,20 @@ const Container = styled("div")({
   paddingTop: 50,
 });
 
+const HorizontalContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  width: "100%",
+});
+
 export default class AppLayout extends React.Component {
   public render() {
     return (
       <Container>
         <HeaderBar />
-        <div>
+        <HorizontalContainer>
           <Routes />
-        </div>
+        </HorizontalContainer>
       </Container>
     );
   }

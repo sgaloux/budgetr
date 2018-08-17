@@ -1,5 +1,8 @@
-import { Alignment, Button, Classes, Navbar } from "@blueprintjs/core";
+import { Alignment, Classes, Navbar } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
+import { EPages } from "../../Routes";
+import { ButtonLink } from "./NavbarButtonLink";
 
 export default class HeaderBar extends React.Component<any, any> {
   public render() {
@@ -8,8 +11,12 @@ export default class HeaderBar extends React.Component<any, any> {
         <Navbar.Group align={Alignment.LEFT}>
           <Navbar.Heading>BudgetR</Navbar.Heading>
           <Navbar.Divider />
-          <Button className="bp3-minimal" icon="home" text="Home" />
-          <Button className="bp3-minimal" icon="chart" text="Accounts" />
+          <ButtonLink to={EPages.Home} text="home" icon={IconNames.HOME} />
+          <ButtonLink
+            to={EPages.Accounts}
+            text="accounts"
+            icon={IconNames.CHART}
+          />
         </Navbar.Group>
       </Navbar>
     );
