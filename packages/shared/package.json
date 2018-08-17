@@ -1,17 +1,17 @@
 {
   "name": "@budgetr/shared",
+  "author": "Sébastien Galoux",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "start": "tsc --watch",
+    "start": "tsc --watch --preserveWatchOutput",
     "clean": "rimraf ./dist",
     "compile": "tsc",
     "build": "run-s clean compile",
     "sync:types": "typesync"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/rimraf": "^2.0.2",

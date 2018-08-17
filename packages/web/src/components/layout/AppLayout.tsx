@@ -1,17 +1,32 @@
 import * as React from "react";
+import styled from "react-emotion";
 import { Routes } from "../../Routes";
+import HeaderBar from "./HeaderBar";
 
-export interface AppLayoutProps {}
+const Container = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  height: "100%",
+  paddingLeft: 5,
+  paddingRight: 5,
+  paddingTop: 50,
+});
 
-export default class AppLayout extends React.Component<AppLayoutProps, any> {
+const HorizontalContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  width: "100%",
+});
+
+export default class AppLayout extends React.Component {
   public render() {
     return (
-      <div>
-        AppLayout
-        <div>
+      <Container>
+        <HeaderBar />
+        <HorizontalContainer>
           <Routes />
-        </div>
-      </div>
+        </HorizontalContainer>
+      </Container>
     );
   }
 }

@@ -1,39 +1,43 @@
+import { Button, ButtonGroup } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
-import { compute } from "@budgetr/shared";
-export interface AccountsProps {}
+import PageTemplate from "../layout/PageTemplate";
+import AddAccountDialog from "./AddAccountDialog";
 
-const accountsQuery = gql`
-  query {
-    accounts {
-      id
-      name
-    }
+interface IAccountsPageState {
+  addingAccount: boolean;
+}
+
+export default class AccountsPage extends React.Component<
+  any,
+  IAccountsPageState
+> {
+  constructor(props) {
+    super(props);
+    this.state = { addingAccount: false };
   }
-`;
 
-export default class Accounts extends React.Component<AccountsProps, any> {
   public render() {
     return (
-      <div>
-        <h1>Accounts</h1>
-        <span>Compute from shared lib: {compute(3, 42)}</span>
-        <Query query={accountsQuery}>
-          {({ loading, error, data }) => {
-            if (loading) return <div>loading...</div>;
-            if (error) return <div>error: {error}</div>;
-            else
-              return (
-                <ul>
-                  {data.accounts.map(e => (
-                    <li key={e.id}>{e.name}</li>
-                  ))}
-                </ul>
-              );
-          }}
-        </Query>
-      </div>
+      <PageTemplate title="Accounts">
+        <ButtonGroup>
+          <Button rightIcon={IconNames.PLUS} onClick={this.addAccount}>
+            Add account
+          </Button>
+        </ButtonGroup>
+        <AddAccountDialog
+          isOpen={this.state.addingAccount}
+          onClose={this.handleClose}
+        />
+      </PageTemplate>
     );
+  }
+
+  private addAccount = () => {
+    this.setState({ addingAccount: true });
+  }
+
+  private handleClose = () => {
+    this.setState({ addingAccount: false });
   }
 }
