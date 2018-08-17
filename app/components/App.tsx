@@ -1,28 +1,41 @@
 import * as React from "react";
 import { RootStore } from "../store/RootStore";
-import { inject, observer } from "mobx-react";
-import { mapStore } from "../store/mapStore";
+import { gql } from "apollo-boost";
+import { Query } from "react-apollo";
 
-interface IAppProps {
-  RootStore?: typeof RootStore.Type;
-}
+interface IAppProps {}
 
-@inject(
-  mapStore(root => ({
-    RootStore: root
-  }))
-)
-@observer
+const GET_ACCOUNTS = gql`
+  query {
+    accounts {
+      name
+      id
+    }
+  }
+`;
+
 class App extends React.Component<IAppProps> {
   public render() {
-    const rootStore = this.props.RootStore!;
     return (
       <div>
-        Application version is {rootStore.version}
-        <div>
-          <button onClick={rootStore.changeText}>Change Text ?</button>
-        </div>
-        <p>Text is : {rootStore.text}</p>
+        <Query query={GET_ACCOUNTS}>
+          {({ loading, error, data, refetch }) => {
+            if (loading) return <div>loading...</div>;
+            if (error) return <div>error : {error}</div>;
+            return (
+              <div>
+                <ul>
+                  {data.accounts.map(a => (
+                    <li key={a.id}>{a.name}</li>
+                  ))}
+                </ul>
+                <div>
+                  <button onClick={() => refetch()}>Get data</button>
+                </div>
+              </div>
+            );
+          }}
+        </Query>
       </div>
     );
   }
