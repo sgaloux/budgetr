@@ -1,0 +1,25 @@
+{
+  "name": "@budgetr/shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsc --watch",
+    "clean": "rimraf ./dist",
+    "compile": "tsc",
+    "build": "run-s clean compile",
+    "sync:types": "typesync"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/rimraf": "^2.0.2",
+    "npm-run-all": "^4.1.3",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
+    "typescript": "^3.0.1",
+    "typesync": "^0.3.1"
+  }
+}
