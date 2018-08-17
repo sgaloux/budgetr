@@ -1,10 +1,11 @@
-import { Button, ButtonGroup, Dialog } from "@blueprintjs/core";
+import { Button, ButtonGroup } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
 import PageTemplate from "../layout/PageTemplate";
+import AddAccountDialog from "./AddAccountDialog";
 
 interface IAccountsPageState {
-  adding: boolean;
+  addingAccount: boolean;
 }
 
 export default class AccountsPage extends React.Component<
@@ -13,7 +14,7 @@ export default class AccountsPage extends React.Component<
 > {
   constructor(props) {
     super(props);
-    this.state = { adding: false };
+    this.state = { addingAccount: false };
   }
 
   public render() {
@@ -24,24 +25,19 @@ export default class AccountsPage extends React.Component<
             Add account
           </Button>
         </ButtonGroup>
-        <Dialog
-          isOpen={this.state.adding}
-          canEscapeKeyClose={true}
-          isCloseButtonShown={true}
-          onClose={this.closePopup}
-          icon={IconNames.PIVOT_TABLE}
-        >
-          Adding new account..
-        </Dialog>
+        <AddAccountDialog
+          isOpen={this.state.addingAccount}
+          onClose={this.handleClose}
+        />
       </PageTemplate>
     );
   }
 
   private addAccount = () => {
-    this.setState({ adding: true });
+    this.setState({ addingAccount: true });
   }
 
-  private closePopup = () => {
-    this.setState({ adding: false });
+  private handleClose = () => {
+    this.setState({ addingAccount: false });
   }
 }
