@@ -24,11 +24,14 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.3.0",
+    "@blueprintjs/icons": "^3.0.0",
     "@gql2ts/from-schema": "^1.8.2",
     "@types/mobx-devtools-mst": "^0.9.0",
     "@types/react-router-dom": "^4.3.0",
     "apollo-boost": "^0.1.13",
     "apollo-server": "^2.0.2",
+    "emotion": "^9.2.6",
     "glob": "^7.1.2",
     "graphql": "^0.13.2",
     "graphql-import": "^0.6.0",
@@ -42,6 +45,7 @@
     "react": "^16.4.2",
     "react-apollo": "^2.1.11",
     "react-dom": "^16.4.2",
+    "react-emotion": "^9.2.6",
     "react-router-dom": "^4.3.1",
     "read-pkg": "^4.0.1",
     "reflect-metadata": "^0.1.12",
@@ -53,7 +57,7 @@
   "scripts": {
     "start": "nf start",
     "start:server": "cross-env NODE_ENV=development nodemon --exec ts-node --files server/index.ts",
-    "start:web": "parcel -p 3000 watch app/index.html",
+    "start:web": "parcel -p 3000 watch app/index.html --log-level 3 --open",
     "genTypes": "ts-node --files server/scripts/createTypes.ts"
   }
 }
