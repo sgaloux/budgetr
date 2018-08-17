@@ -1,17 +1,24 @@
 import * as React from "react";
+import styled from "react-emotion";
 import { Routes } from "../../Routes";
+import HeaderBar from "./HeaderBar";
 
-export interface AppLayoutProps {}
+const Container = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  height: "100%",
+  paddingTop: 50,
+});
 
-export default class AppLayout extends React.Component<AppLayoutProps, any> {
+export default class AppLayout extends React.Component {
   public render() {
     return (
-      <div>
-        AppLayout
+      <Container>
+        <HeaderBar />
         <div>
           <Routes />
         </div>
-      </div>
+      </Container>
     );
   }
 }

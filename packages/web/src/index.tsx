@@ -1,6 +1,6 @@
-import * as ReactDom from "react-dom";
 import * as React from "react";
 import { ApolloProvider } from "react-apollo";
+import * as ReactDom from "react-dom";
 
 import "./index.css";
 
@@ -12,7 +12,7 @@ const renderApp = (store: any) => {
     <ApolloProvider client={client}>
       <AppLayout />
     </ApolloProvider>,
-    document.getElementById("root")
+    document.getElementById("root"),
   );
 };
 

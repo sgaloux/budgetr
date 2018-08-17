@@ -27,9 +27,11 @@
     "@blueprintjs/core": "^3.3.0",
     "@blueprintjs/icons": "^3.0.0",
     "apollo-boost": "^0.1.13",
+    "emotion": "^9.2.6",
     "react": "^16.4.2",
     "react-apollo": "^2.1.11",
     "react-dom": "^16.4.2",
+    "react-emotion": "^9.2.6",
     "react-router-dom": "^4.3.1"
   }
 }
