@@ -1,63 +1,22 @@
 {
   "name": "budgetr",
+  "private": true,
+  "license": "ISC",
   "version": "0.0.1",
   "description": "Awesome project developed with TypeORM.",
-  "devDependencies": {
-    "@types/glob": "^5.0.35",
-    "@types/graphql": "^0.13.4",
-    "@types/prettier": "^1.13.2",
-    "@types/react": "^16.4.10",
-    "@types/react-dom": "^16.0.7",
-    "@types/read-pkg": "^3.0.0",
-    "@types/reflect-metadata": "^0.1.0",
-    "@types/sqlite3": "^3.1.3",
-    "@types/typescript": "^2.0.0",
-    "@types/uuid": "^3.4.3",
-    "@types/yup": "^0.24.8",
-    "cross-env": "^5.2.0",
-    "foreman": "^3.0.1",
-    "nodemon": "^1.18.3",
-    "parcel-bundler": "^1.9.7",
-    "prettier": "^1.14.2",
-    "ts-node": "7.0.1",
-    "types-installer": "^1.4.0",
-    "typescript": "3.0.1"
-  },
-  "dependencies": {
-    "@blueprintjs/core": "^3.3.0",
-    "@blueprintjs/icons": "^3.0.0",
-    "@gql2ts/from-schema": "^1.8.2",
-    "@types/mobx-devtools-mst": "^0.9.0",
-    "@types/react-router-dom": "^4.3.0",
-    "apollo-boost": "^0.1.13",
-    "apollo-server": "^2.0.2",
-    "emotion": "^9.2.6",
-    "glob": "^7.1.2",
-    "graphql": "^0.13.2",
-    "graphql-import": "^0.6.0",
-    "graphql-tag": "^2.9.2",
-    "graphql-tools": "^3.1.1",
-    "merge-graphql-schemas": "^1.5.3",
-    "mobx": "^5.0.3",
-    "mobx-devtools-mst": "^0.9.18",
-    "mobx-react": "^5.2.5",
-    "mobx-state-tree": "^3.1.1",
-    "react": "^16.4.2",
-    "react-apollo": "^2.1.11",
-    "react-dom": "^16.4.2",
-    "react-emotion": "^9.2.6",
-    "react-router-dom": "^4.3.1",
-    "read-pkg": "^4.0.1",
-    "reflect-metadata": "^0.1.12",
-    "sqlite3": "^4.0.2",
-    "typeorm": "0.2.7",
-    "uuid": "^3.3.2",
-    "yup": "^0.26.2"
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "nf start",
-    "start:server": "cross-env NODE_ENV=development nodemon --exec ts-node --files server/index.ts",
-    "start:web": "parcel -p 3000 watch app/index.html --log-level 3 --open",
-    "genTypes": "ts-node --files server/scripts/createTypes.ts"
+    "start:web": "lerna run start",
+    "start:server": "lerna run start",
+    "sync:types": "lerna run sync:types && yarn install"
+  },
+  "devDependencies": {
+    "lerna": "^3.0.6"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.3"
   }
 }

@@ -6,6 +6,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "moduleResolution": "node",
+    "declaration": true,
     "removeComments": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -16,12 +17,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "suppressImplicitAnyIndexErrors": true
+    "skipLibCheck": true,
+    "baseUrl": "..",
+    "paths": {
+      "@budgetr/*": ["./*/src"]
+    }
   },
-  "exclude": ["node_modules"],
-  "include": ["./server/**/*.tsx", "./server/**/*.ts"]
+  "exclude": ["node_modules", "dist"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }
