@@ -6,7 +6,9 @@
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./cache",
     "start": "parcel -p 3000 watch src/index.html --open --log-level 3",
-    "sync:types": "typesync"
+    "sync:types": "typesync",
+    "generate:apollo:types": "apollo codegen:generate --target=typescript --key=service:budgetr-server:KWW8xRcqnj7pFceNFrm9Pg --addTypename grapqhl_types",
+    "generate:apollo:types:watch": "apollo codegen:generate --target=typescript --key=service:budgetr-server:KWW8xRcqnj7pFceNFrm9Pg --addTypename --watch grapqhl_types"
   },
   "author": "Sébastien Galoux",
   "license": "ISC",

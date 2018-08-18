@@ -4,14 +4,11 @@ import { gql } from "apollo-boost";
 import { Field, FieldProps, Form, Formik, FormikProps } from "formik";
 import * as React from "react";
 import { myApolloClient } from "../../apollo";
+import { AddAccountVariables } from "./grapqhl_types/AddAccount";
 
 export interface IAddAccountDialogProps {
   isOpen: boolean;
   onClose: () => void;
-}
-
-interface IAccountFormValues {
-  name: string;
 }
 
 export default class AddAccountDialog extends React.Component<
@@ -40,12 +37,15 @@ export default class AddAccountDialog extends React.Component<
         <Formik
           initialValues={{ name: "" }}
           onSubmit={this.onSave}
-          render={(formikBag: FormikProps<IAccountFormValues>) => (
+          render={(formikBag: FormikProps<AddAccountVariables>) => (
             <Form>
               <div className={Classes.DIALOG_BODY}>
                 <Field
                   name="name"
-                  render={({ field, form }: FieldProps<IAccountFormValues>) => (
+                  render={({
+                    field,
+                    form,
+                  }: FieldProps<AddAccountVariables>) => (
                     <div>
                       <input type="text" {...field} placeholder="Name" />
                       {form.touched.name &&
@@ -72,7 +72,7 @@ export default class AddAccountDialog extends React.Component<
       </Dialog>
     );
   }
-  private onSave = (values: IAccountFormValues) => {
+  private onSave = (values: AddAccountVariables) => {
     myApolloClient.mutate({
       mutation: this.ADD_ACCOUNT,
       variables: values,
