@@ -2,6 +2,7 @@ import { Button, ButtonGroup } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
 import PageTemplate from "../layout/PageTemplate";
+import AccountList from "./AccountsList";
 import AddAccountDialog from "./AddAccountDialog";
 
 interface IAccountsPageState {
@@ -25,6 +26,7 @@ export default class AccountsPage extends React.Component<
             Add account
           </Button>
         </ButtonGroup>
+        <AccountList />
         <AddAccountDialog
           isOpen={this.state.addingAccount}
           onClose={this.handleClose}

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import AccountsPage from "./components/accounts/AccountsPage";
-import HomePage from "./components/home/HomePage";
+import AccountsPage from "./modules/accounts/AccountsPage";
+import HomePage from "./modules/home/HomePage";
 
 export enum EPages {
   Home = "/home",

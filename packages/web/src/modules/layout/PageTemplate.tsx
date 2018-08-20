@@ -12,8 +12,6 @@ const Container = styled("div")({
   width: "100%",
 });
 
-const PageContentContainer = styled("div")({});
-
 export default class PageTemplate extends React.Component<
   IPageTemplateProps,
   any
@@ -22,7 +20,7 @@ export default class PageTemplate extends React.Component<
     return (
       <Container>
         <h1>{this.props.title}</h1>
-        <PageContentContainer>{this.props.children}</PageContentContainer>
+        {this.props.children}
       </Container>
     );
   }

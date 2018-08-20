@@ -2,19 +2,14 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: AddAccount
+// GraphQL query operation: GetAccounts
 // ====================================================
 
-export interface AddAccount_addAccount {
-  __typename: "Account";
+export interface GetAccounts_accounts {
   id: string;
   name: string;
 }
 
-export interface AddAccount {
-  addAccount: AddAccount_addAccount;
-}
-
-export interface AddAccountVariables {
-  name: string;
+export interface GetAccounts {
+  accounts: (GetAccounts_accounts | null)[];
 }

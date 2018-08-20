@@ -6,7 +6,7 @@ import "./index.css";
 
 import { BrowserRouter } from "react-router-dom";
 import { myApolloClient } from "./apollo";
-import AppLayout from "./components/layout/AppLayout";
+import AppLayout from "./modules/layout/AppLayout";
 
 const renderApp = (store: any) => {
   ReactDom.render(

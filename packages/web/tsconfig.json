@@ -17,6 +17,7 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "baseUrl": "..",
     "paths": {
       "@budgetr/*": ["./*/src"]

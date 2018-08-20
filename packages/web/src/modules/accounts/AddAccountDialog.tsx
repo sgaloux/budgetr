@@ -4,7 +4,7 @@ import { gql } from "apollo-boost";
 import { Field, FieldProps, Form, Formik, FormikProps } from "formik";
 import * as React from "react";
 import { myApolloClient } from "../../apollo";
-import { AddAccountVariables } from "./grapqhl_types/AddAccount";
+import { AddAccountVariables } from "./gql_types/AddAccount";
 
 export interface IAddAccountDialogProps {
   isOpen: boolean;

@@ -6,7 +6,6 @@
 // ====================================================
 
 export interface AddAccount_addAccount {
-  __typename: "Account";
   id: string;
   name: string;
 }
