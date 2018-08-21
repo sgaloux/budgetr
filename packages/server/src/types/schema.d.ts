@@ -29,15 +29,21 @@ declare namespace GQL {
     __typename: 'Account';
     id: string;
     name: string;
+    iban: string | null;
   }
 
   interface IMutation {
     __typename: 'Mutation';
     addAccount: IAccount;
+    removeAccount: string | null;
   }
 
   interface IAddAccountOnMutationArguments {
     name: string;
+  }
+
+  interface IRemoveAccountOnMutationArguments {
+    id: string;
   }
 
   interface IError {

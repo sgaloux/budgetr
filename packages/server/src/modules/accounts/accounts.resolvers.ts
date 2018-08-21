@@ -16,5 +16,15 @@ export const resolvers: ResolverMap = {
       await accRepository.save(accountCreated);
       return accountCreated;
     },
+    removeAccount: async (_, { id }: GQL.IRemoveAccountOnMutationArguments) => {
+      const accRepository = getCustomRepository(AccountRepository);
+
+      const acc = await accRepository.findOne(id);
+      if (acc != null) {
+        await accRepository.remove(acc);
+        return id;
+      }
+      return null;
+    },
   },
 };

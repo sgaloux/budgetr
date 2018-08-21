@@ -78,6 +78,7 @@ export default class AddAccountDialog extends React.Component<
     myApolloClient.mutate({
       mutation: this.ADD_ACCOUNT,
       variables: values,
+      refetchQueries: ["GetAccounts"],
     });
     this.props.onClose();
   }

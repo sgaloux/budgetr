@@ -1,4 +1,5 @@
 type Account {
   id: String!
   name: String!
+  iban: String
 }

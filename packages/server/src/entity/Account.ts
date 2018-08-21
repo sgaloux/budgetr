@@ -1,11 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { TraceableEntity } from "./TraceableEntity";
 
 @Entity()
 export class Account extends TraceableEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
-  @Column()
-  name: string;
+  @Column({ unique: true })
+  public name: string;
+
+  @Column({ unique: true, nullable: true })
+  public iban: string;
 }
