@@ -7,12 +7,15 @@
     "clean": "rimraf ./dist && rimraf ./cache",
     "start": "parcel -p 3000 watch src/index.html --open --log-level 3",
     "sync:types": "typesync",
-    "generate:apollo:types": "apollo codegen:generate --target=typescript --key=service:budgetr-server:KWW8xRcqnj7pFceNFrm9Pg gql_types"
+    "schema:download": "apollo schema:download --endpoint=http://localhost:4000/graphql",
+    "schema:generate:types": "apollo codegen:generate --target=typescript --schema=./schema.json --namespace=GQL --outputFlat ./src/typings/graphql.d.ts ",
+    "gen:graphql:types": "run-s schema:download schema:generate:types"
   },
   "author": "Sébastien Galoux",
   "license": "ISC",
   "devDependencies": {
     "@types/classnames": "^2.2.6",
+    "@types/dotenv": "^4.0.3",
     "@types/node-sass": "^3.10.32",
     "@types/react": "^16.4.11",
     "@types/react-dom": "^16.0.7",
@@ -35,6 +38,7 @@
     "@budgetr/shared": "1.0.0",
     "apollo-boost": "^0.1.13",
     "classnames": "^2.2.6",
+    "dotenv": "^6.0.0",
     "emotion": "^9.2.6",
     "formi": "^0.4.0",
     "formik": "^1.0.3",

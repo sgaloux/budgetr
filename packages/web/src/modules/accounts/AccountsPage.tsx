@@ -1,9 +1,10 @@
-import { Button, ButtonGroup } from "@blueprintjs/core";
+import { Button, ButtonGroup, Spinner } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
 import PageTemplate from "../layout/PageTemplate";
 import AccountList from "./AccountsList";
 import AddAccountDialog from "./AddAccountDialog";
+import AccountsQuery from "./queries/AccountsQuery";
 
 interface IAccountsPageState {
   addingAccount: boolean;
@@ -26,11 +27,18 @@ export default class AccountsPage extends React.Component<
             Add account
           </Button>
         </ButtonGroup>
-        <AccountList />
-        <AddAccountDialog
-          isOpen={this.state.addingAccount}
-          onClose={this.handleClose}
-        />
+        <AccountsQuery>
+          {({ loading, accounts, refetch }) => (
+            <>
+              {loading ? <Spinner /> : <AccountList accounts={accounts} />}
+              <AddAccountDialog
+                isOpen={this.state.addingAccount}
+                onClose={this.handleClose}
+                onClosed={() => refetch()}
+              />
+            </>
+          )}
+        </AccountsQuery>
       </PageTemplate>
     );
   }

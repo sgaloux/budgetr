@@ -4,11 +4,12 @@ import { gql } from "apollo-boost";
 import { Field, FieldProps, Form, Formik, FormikProps } from "formik";
 import * as React from "react";
 import { myApolloClient } from "../../apollo";
-import { AddAccountVariables } from "./gql_types/AddAccount";
+import { AddAccountVariables } from "../../typings/graphql";
 
 export interface IAddAccountDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  onClosed?: () => void;
 }
 
 export default class AddAccountDialog extends React.Component<
@@ -24,13 +25,14 @@ export default class AddAccountDialog extends React.Component<
   `;
 
   public render() {
-    const { isOpen, onClose } = this.props;
+    const { isOpen, onClose, onClosed } = this.props;
     return (
       <Dialog
         isOpen={isOpen}
         canEscapeKeyClose={true}
         isCloseButtonShown={true}
         onClose={onClose}
+        onClosed={onClosed}
         icon={IconNames.ADD}
         title="Add account"
       >

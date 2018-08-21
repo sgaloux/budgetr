@@ -1,13 +1,13 @@
-import { ResolverMap } from "../../types/graphql-utils";
 import { getCustomRepository } from "typeorm";
 import { AccountRepository } from "../../repositories/accountRepository";
+import { ResolverMap } from "../../types/graphql-utils";
 
 export const resolvers: ResolverMap = {
   Query: {
     accounts: async () => {
       const accRepository = getCustomRepository(AccountRepository);
-      return await accRepository.find({ where: {} });
-    }
+      return accRepository.find({ where: {} });
+    },
   },
   Mutation: {
     addAccount: async (_, { name }: GQL.IAddAccountOnMutationArguments) => {
@@ -15,6 +15,6 @@ export const resolvers: ResolverMap = {
       const accountCreated = accRepository.create({ name });
       await accRepository.save(accountCreated);
       return accountCreated;
-    }
-  }
+    },
+  },
 };

@@ -6,7 +6,9 @@
     "jsx-no-multiline-js": false,
     "jsx-no-lambda": false,
     "interface-name": false,
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false
   },
   "rulesDirectory": []
 }

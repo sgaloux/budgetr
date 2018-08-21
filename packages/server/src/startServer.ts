@@ -1,5 +1,6 @@
 import { ApolloEngine } from "apollo-engine";
 import { ApolloServer } from "apollo-server-express";
+import "dotenv/config";
 import * as express from "express";
 import "reflect-metadata";
 import { createTypeormConnection } from "./utils/createTypeormConnection";
@@ -21,7 +22,7 @@ export async function startServer() {
   server.applyMiddleware({ app });
 
   const engine = new ApolloEngine({
-    apiKey: "service:budgetr-server:KWW8xRcqnj7pFceNFrm9Pg",
+    apiKey: process.env.ENGINE_API_KEY,
   });
 
   await createTypeormConnection();

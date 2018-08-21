@@ -1,8 +1,9 @@
-import { Spinner } from "@blueprintjs/core";
 import * as React from "react";
-import AccountsQuery from "./queries/AccountsQuery";
+import { GetAccounts_accounts } from "./queries/gql_types/GetAccounts";
 
-export interface AccountListProps {}
+export interface AccountListProps {
+  accounts: Array<GetAccounts_accounts | null>;
+}
 
 export default class AccountList extends React.Component<
   AccountListProps,
@@ -10,20 +11,11 @@ export default class AccountList extends React.Component<
 > {
   public render() {
     return (
-      <AccountsQuery>
-        {({ loading, data, error }) => {
-          if (loading) {
-            return <Spinner />;
-          }
-          return (
-            <ul>
-              {data!.accounts.map((acc) => (
-                <li>{acc!.name}</li>
-              ))}
-            </ul>
-          );
-        }}
-      </AccountsQuery>
+      <ul>
+        {this.props.accounts!.map((acc) => (
+          <li key={acc!.name}>{acc!.name}</li>
+        ))}
+      </ul>
     );
   }
 }

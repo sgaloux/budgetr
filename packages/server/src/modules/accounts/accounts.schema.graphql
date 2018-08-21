@@ -1,5 +1,5 @@
 type Query {
-  accounts: [Account]!
+  accounts: [Account!]!
 }
 
 type Mutation {

@@ -16,6 +16,15 @@
 - Node >= 8
 - Yarn
 
+## Configure account and service on Apollo-Engine
+
+check here => https://www.apollographql.com/docs/engine/setup-node.html
+setup `.env` file with following content :
+
+```
+ENGINE_API_KEY=<YOURKEYHERE>
+```
+
 ## Setup for developemnt
 
 1. Install dependencies : `yarn install`
