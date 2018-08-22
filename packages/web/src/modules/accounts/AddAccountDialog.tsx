@@ -1,10 +1,19 @@
-import { Button, Classes, Dialog, Intent } from "@blueprintjs/core";
+import {
+  Button,
+  Classes,
+  Dialog,
+  FormGroup,
+  InputGroup,
+  Intent,
+} from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import { gql } from "apollo-boost";
 import { Field, FieldProps, Form, Formik, FormikProps } from "formik";
 import * as React from "react";
+import * as yup from "yup";
 import { myApolloClient } from "../../apollo";
 import { AddAccountVariables } from "../../typings/graphql";
+import ErrorFormGroup from "../common/forms/ErrorFormGroup";
 
 export interface IAddAccountDialogProps {
   isOpen: boolean;
@@ -24,6 +33,10 @@ export default class AddAccountDialog extends React.Component<
     }
   `;
 
+  private validationSchema = yup.object().shape({
+    name: yup.string().required(),
+  });
+
   public render() {
     const { isOpen, onClose, onClosed } = this.props;
     return (
@@ -39,6 +52,7 @@ export default class AddAccountDialog extends React.Component<
         <Formik
           initialValues={{ name: "" }}
           onSubmit={this.onSave}
+          validationSchema={this.validationSchema}
           render={(formikBag: FormikProps<AddAccountVariables>) => (
             <Form>
               <div className={Classes.DIALOG_BODY}>
@@ -48,12 +62,21 @@ export default class AddAccountDialog extends React.Component<
                     field,
                     form,
                   }: FieldProps<AddAccountVariables>) => (
-                    <div>
-                      <input type="text" {...field} placeholder="Name" />
-                      {form.touched.name &&
-                        form.errors.name &&
-                        form.errors.name}
-                    </div>
+                    <ErrorFormGroup
+                      fieldProps={{ field, form }}
+                      label="Name"
+                      labelFor="text-input"
+                      labelInfo="(required)"
+                    >
+                      {({ hasErrors }) => (
+                        <InputGroup
+                          {...field}
+                          id="text-input"
+                          placeholder="Give account name"
+                          intent={hasErrors ? Intent.DANGER : Intent.NONE}
+                        />
+                      )}
+                    </ErrorFormGroup>
                   )}
                 />
               </div>

@@ -38,7 +38,11 @@ export default class AccountsPage extends React.Component<
                 <Spinner />
               ) : (
                 accounts.map((acc) => (
-                  <AccountCard account={acc} onRemove={(id) => ({ id })} />
+                  <AccountCard
+                    key={acc.id}
+                    account={acc}
+                    onRemove={(id) => ({ id })}
+                  />
                 ))
               )}
             </>
