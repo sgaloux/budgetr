@@ -48,53 +48,7 @@ export default class AddAccountDialog extends React.Component<
         onClosed={onClosed}
         icon={IconNames.ADD}
         title="Add account"
-      >
-        <Formik
-          initialValues={{ name: "" }}
-          onSubmit={this.onSave}
-          validationSchema={this.validationSchema}
-          render={(formikBag: FormikProps<AddAccountVariables>) => (
-            <Form>
-              <div className={Classes.DIALOG_BODY}>
-                <Field
-                  name="name"
-                  render={({
-                    field,
-                    form,
-                  }: FieldProps<AddAccountVariables>) => (
-                    <ErrorFormGroup
-                      fieldProps={{ field, form }}
-                      label="Name"
-                      labelFor="text-input"
-                      labelInfo="(required)"
-                    >
-                      {({ hasErrors }) => (
-                        <InputGroup
-                          {...field}
-                          id="text-input"
-                          placeholder="Give account name"
-                          intent={hasErrors ? Intent.DANGER : Intent.NONE}
-                        />
-                      )}
-                    </ErrorFormGroup>
-                  )}
-                />
-              </div>
-              <div className={Classes.DIALOG_FOOTER}>
-                <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-                  <Button
-                    type="submit"
-                    intent={Intent.PRIMARY}
-                    disabled={!formikBag.dirty || !formikBag.isValid}
-                  >
-                    Save
-                  </Button>
-                </div>
-              </div>
-            </Form>
-          )}
-        />
-      </Dialog>
+      />
     );
   }
   private onSave = (values: AddAccountVariables) => {
